@@ -5,7 +5,7 @@ Penger.no
 
 Teamet
 ------
-Øybind
+Øyvind
 Nina
 Eirik
 Jari
