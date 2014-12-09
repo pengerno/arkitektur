@@ -1,4 +1,4 @@
-Scala Arkitektur Dag
+Scala Arkitekturdag
 ====================
 
 Penger.no
