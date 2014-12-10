@@ -71,9 +71,37 @@ Ulemper
   - Elastic4s
 
 ## Unfiltered
-
-
 ### Directives
+```scala
+// Før directives
+case req@GET(ContextPath(_, urls.boliglanListe())) =>
+      val rikerProdukter: List[RiktLanProdukt] = lanService.aktiveBoliglanProdukter
+      sporingsService.registrerProduktvisninger(rikerProdukter.map(rp ⇒ (rp.produkt, rp.rangeringsdata)))
+      val json = rikerProdukter.asJson
+      Ok ~> JsonContent ~> ResponseString(json.spaces4)
+
+// Etter directives      
+case ContextPath(_, urls.boliglanListe()) =>
+      directive.registrerProduktvisninger(Boliglan)      
+      
+private object directive {
+  def registrerProduktvisninger(produktType: ProduktType) =
+    for {
+      _             ← GET
+      cookie        ← data.as.Option[String] named "USERID"
+      prisantydning ← data.as.Option[Long] named "prisantydning"
+      postnr        ← data.as.Option[String] named "postnummer"
+      rikeProdukter ← directive.hentAktiveProdukter(produktType, postnr)
+    } yield {
+      sporingsService.registrerProduktvisninger(
+        rikeProdukter.map(rp ⇒ (rp.produkt, rp.rangeringsdata)),
+        cookie,
+        prisantydning)
+      val json = (Option(Referansenummer.generer), rikeProdukter).asJson.spaces4
+      Ok ~> JsonContent ~> ResponseString(json)
+    }
+}
+```
 
 ## CyberSuite
 
