@@ -121,9 +121,15 @@
         </section>
         <section>
             <h1>Unfiltered</h1>
+            <secion>
+                <ul>
+                    <li>+ Lettvekt</li>
+                    <li>+ Bare fungerer</li>
+                </ul>
+            </secion>
         </section>
         <section>
-            <h1>Directives</h1>
+            <h2>Unfiltered m/Directives</h2>
             <section>
                 <h2>Før</h2>
                     <pre><code class="scala">
@@ -136,7 +142,7 @@ case req@GET(ContextPath(_, urls.boliglanListe())) =>
             </section>
             <section>
                 <h2>Etter</h2>
-                    <pre><code class="scala">
+                <pre><code class="scala">
 case ContextPath(_, urls.boliglanListe()) =>
     directive.registrerProduktvisninger(Boliglan)
 
@@ -162,6 +168,7 @@ private object directive {
         </section>
         <section>
             <h1>Slick CRUD</h1>
+
         </section>
         <section>
             <h1>CyberSuite</h1>
@@ -173,7 +180,7 @@ private object directive {
         <section>
             <h1>Argonaut</h1>
             <section>
-                <pre><code class="scala">
+                <pre><code class="scala" contenteditable="true">
 // Full smack import
 import argonaut.Argonaut._
 import argonaut._
@@ -218,12 +225,32 @@ Ok ~> JsonContent ~> ResponseString(json)
         </section>
         <section>
             <h1>Scalaz</h1>
+            <ul>
+                <li>Bruker det gi forstår</li>
+                <li>=== |+|</li>
+                <li>Validation</li>
+                <li>Minus: import scalaz._; import Scalaz._</li>
+            </ul>
+        </section>
+        <section>
+            <h1>Constretto</h1>
+            <ul>
+                <li>Integrert i FINN.NO</li>
+                <li>Fungerer bra</li>
+            </ul>
         </section>
         <section>
             <h1>Slick</h1>
+            <ul>
+                <li>Fin DSL - Lett å forholde seg til. (Unntaket: heftige joins)</li>
+                <li>Noen ganger uryddig SQL.</li>
+            </ul>
         </section>
         <section>
             <h1>Elastic4s</h1>
+            <ul>
+                <li>DSL</li>
+            </ul>
         </section>
 
         <section>
@@ -233,6 +260,10 @@ Ok ~> JsonContent ~> ResponseString(json)
             </section>
             <section>
                 <h2>Typisk</h2>
+                <pre><code class="scala" contenteditable="true">
+val name = ""
+
+                </code></pre>
             </section>
             <section>
                 <h2>Transaction abstraction</h2>
