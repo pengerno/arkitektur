@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Scala Arkitektur - Penger.no</title>
+
+    <meta name="description" content="Scala Arkitektur for Penger.no">
+    <meta name="author" content="Stein Kåre Skytteren">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/theme/sk.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/idea.css">
+
+    <script>
+        // If the query includes 'print-pdf' we'll use the PDF print sheet
+        document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+</head>
+<body>
+<div class="reveal">
+    <div class="state-background"></div>
+    <div class="slides">
+        <section>
+            <h1 class="singleline head">Scala Arkitektur</h1>
+            <sub class="head">Penger.no</sub>
+        </section>
+        <section>
+            <h1>Teamet</h1>
+            <ul>
+                <li>Øyvind</li>
+                <li>Nina</li>
+                <li>Eirik</li>
+                <li>Jari</li>
+                <li>Torbjørn</li>
+                <li>Jørgen</li>
+                <li>Stein Kåre</li>
+            </ul>
+        </section>
+        <section>
+            <h1>Historien</h1>
+            <p>2010 -> Jørgen forteller om den golden days - da man trodde alt var bra!</p>
+
+            <ul>
+                <li>Java</li>
+                <li>Spring MVC</li>
+                <li>Hibernate</li>
+            </ul>
+        </section>
+        <section>
+            <h1>I dag</h1>
+            <section>
+                <h2>Overordnet</h2>
+            </section>
+            <section>
+                <h3>Produkter</h3>
+                <ul>
+                    <li>Boliglån</li>
+                    <li>Forsikring</li>
+                    <li>Billån</li>
+                    <li>Strøm</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Sepearsjon mellom Front og Backend</h3>
+                <h4>Fordeler</h4>
+                <ul><li>Spesialisering</li></ul>
+
+                <h4>Ulemper</h4>
+                <ul><li>Flere involverte i en feature</li></ul>
+            </section>
+        </section>
+        <section>
+            <h1>Frontent for brukere/søkere</h1>
+            <ul>
+                <li>Node.js</li>
+                <li>Client.js</li>
+            </ul>
+
+        </section>
+        <section>
+            <h1>Frontent for admin</h1>
+            <ul>
+                <li>HTML fram Scala</li>
+                <li>Slick CRUD</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Backend</h1>
+            <h2>HTTP</h2>
+            <ul>
+                <li>Unfiltered m/Directives</li>
+                <li>(Cyber)Suite</li>
+            </ul>
+            <h2>Middleware</h2>
+            <ul>
+                <li>Dispatch</li>
+                <li>Argonaut</li>
+                <li>Scalaz</li>
+            </ul>
+            <h2>Data</h2>
+            <ul>
+                <li>Slick</li>
+                <li>Elastic4s</li>
+            </ul>
+        </section>
+        <section>
+            <h1>Unfiltered</h1>
+        </section>
+        <section>
+            <h1>Directives</h1>
+        </section>
+        <section>
+            <h1>Slick CRUD</h1>
+        </section>
+        <section>
+            <h1>CyberSuite</h1>
+        </section>
+        <section>
+            <h1>Dispatch</h1>
+            <h3>WS/SOAP</h3>
+        </section>
+        <section>
+            <h1>Argonaut</h1>
+        </section>
+        <section>
+            <h1>Scalaz</h1>
+        </section>
+        <section>
+            <h1>Slick</h1>
+        </section>
+        <section>
+            <h1>Elastic4s</h1>
+        </section>
+
+        <section>
+            <h1>Patterns</h1>
+            <section>
+                <h2>Cake</h2>
+            </section>
+            <section>
+                <h2>Typisk</h2>
+            </section>
+            <section>
+                <h2>Transaction abstraction</h2>
+            </section>
+        </section>
+        <section>
+            <h1>Utvikling/Miljø</h1>
+            <section>
+                <h2></h2>
+            </section>
+        </section>
+
+        <section>
+            <h1>∑</h1>
+        </section>
+        <section>
+            <h1>?</h1>
+        </section>
+    </div>
+    <!-- The navigational controls UI -->
+    <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+    </aside>
+
+    <!-- Presentation progress bar -->
+    <div class="progress"><span></span></div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/highlight.pack.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        ]
+    });
+
+</script>
+</body>
+</html>
