@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/theme/sk.css">
 
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/idea.css">
     <style>
         .reveal .slides{
             max-width: 1200px;
         }
     </style>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/idea.css">
 
     <script>
         // If the query includes 'print-pdf' we'll use the PDF print sheet
@@ -97,50 +97,43 @@
 
         </section>
         <section>
-            <h1>Frontent for admin</h1>
-            <ul>
-                <li>HTML fra Scala</li>
-                <li>Slick CRUD</li>
-            </ul>
-        </section>
-
-        <section>
             <h1>Backend</h1>
             <section></section>
             <section>
                 <h2>HTTP</h2>
                 <ul>
-                    <li>Unfiltered m/Directives</li>
-                    <li>(Cyber)Suite</li>
+                    <li class="fragment">Unfiltered m/Directives</li>
+                    <li class="fragment">CyberSculpt</li>
+                    <li class="fragment">Slick CRUD</li>
                 </ul>
             </section>
             <section>
                 <h2>Middleware</h2>
                 <ul>
-                    <li>Dispatch</li>
-                    <li>Argonaut</li>
-                    <li>Scalaz</li>
+                    <li class="fragment">Dispatch</li>
+                    <li class="fragment">Argonaut</li>
+                    <li class="fragment">Scalaz</li>
                 </ul>
             </section>
             <section>
                 <h2>Data</h2>
                 <ul>
-                    <li>Slick</li>
-                    <li>Elastic4s</li>
+                    <li class="fragment">Slick</li>
+                    <li class="fragment">Elastic4s</li>
                 </ul>
             </section>
         </section>
         <section>
             <h1>Unfiltered</h1>
-            <secion>
+            <section>
                 <ul>
                     <li>+ Lettvekt</li>
                     <li>+ Bare fungerer</li>
                 </ul>
-            </secion>
+            </section>
         </section>
         <section>
-            <h2>Unfiltered m/Directives</h2>
+            <h2>Unfiltered.Directives</h2>
             <section>
                 <h2>Før</h2>
                     <pre><code class="scala">
@@ -179,18 +172,82 @@ private object directive {
         </section>
         <section>
             <h1>Slick CRUD</h1>
-            <ul>
-                <li class="fragment">Slick 1.0 - Ru</li>
-                <li class="fragment">Slick 2.0 - Ru</li>
-                <li class="fragment">Slick 2.2 - CRU(D)</li>
-            </ul>
+            <section>
+                <ul>
+                    <li class="fragment">Slick 1.0 - Ru</li>
+                    <li class="fragment">Slick 2.0 - Ru</li>
+                    <li class="fragment">Slick 2.2 - CRUD</li>
+                </ul>
+            </section>
+            <section>
+                <h2>DEMO</h2>
+            </section>
         </section>
         <section>
-            <h1>CyberSuite</h1>
-            <ul>
-                <li class="fragment">Skjema design/DSL</li>
-                <li class="fragment">Valideringsmismatch</li>
-            </ul>
+            <h1>CyberSculpt</h1>
+            <section>
+                <ul>
+                    <li class="fragment">Skjema design/DSL</li>
+                    <li class="fragment">Løser: Valideringsmismatch</li>
+                </ul>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
+val egenandel = enumField[BilEgenandelBruker](
+    name  = "egenandel",
+    label = "Ønsket egenandel",
+    values = BilEgenandelBruker.values.map(a => (a.displayValue, a)),
+    tooltip = Some("Beløpet du betaler for å få forsikringsutbetaling for skader på egen bil. Jo høyere egenandel, jo lavere pris på forsikringen.")
+)
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
+Form(
+    attrs(
+        title("Sammenlign og kjøp bilforsikring"),
+        formName("bilforsikringspris"),
+        showStepNav(v = true)
+    ),
+    navigation(
+        next(
+            name("nextButton"),
+            id("nextButton"),
+            elementType("button"),
+            text("Hent priser"),
+            extraClass("button--primary button--wide button--large"),
+            inline
+        ),
+//...
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
+    step(
+        attrs(
+            name("Fyll ut skjemaet")
+        ),
+        stepContent(
+            attrs(width("66"),extraClass("grid100-md")),
+            Seq(
+                section(
+                    attrs(extraClass("bg--secondary only-lg")),
+                    row(
+                        cell(
+                            element(
+                                attrs(
+                                    elementType("inlineText"),
+                                    text("Fyll ut skjemaet for å få pristilbud fra selskapene")
+                                )
+                            )
+                        ),
+                        cell(egenandel)
+                    )
+                )) ++
+                prisSections ++
+   //...
+                </code></pre>
+            </section>
         </section>
         <section>
             <h1>Dispatch</h1>
@@ -198,29 +255,43 @@ private object directive {
         </section>
         <section>
             <h1>Argonaut</h1>
+            <section></section>
             <section>
                 <pre><code class="scala" contenteditable="true">
 // Full smack import
 import argonaut.Argonaut._
 import argonaut._
-
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
 // Codec for case class goodness
 case class Person(name: String, age: Int, things: List[String])
 implicit def PersonCodecJson =
                 casecodec3(Person.apply, Person.unapply)("name", "age", "things")
-
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
 // Hjemmebakt codec
 implicit val BigDecimalCodecJson: CodecJson[BigDecimal] =
     CodecJson(
         bd ⇒ jString(bd.toString()),
         c ⇒ c.as[String].map(s ⇒ BigDecimal(s))
     )
-
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
 // Encoding json mer manuelt
 implicit def RedirectUrlEncodeJson: EncodeJson[RedirectUrl] =
     EncodeJson((ru: RedirectUrl) ⇒
         ("apiUrl" := ru.apiUrl) ->: ("browserUrl" := ru.browserUrl) ->: jEmptyObject)
-
+    )
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
 // Decoding kan også gjøres mer custom
 implicit val produktivisningDecoder: DecodeJson[Produktvisning] = {
     DecodeJson(c ⇒ for {
@@ -235,19 +306,23 @@ implicit val produktivisningDecoder: DecodeJson[Produktvisning] = {
         Produktvisning(produktid, produkttype)
     })
 }
-
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="scala" contenteditable="true">
 // Med impicits i scope får man json-objekt-generering der man trenger det
 val json = service.hentPerson(navn).asJson.spaces4
 Ok ~> JsonContent ~> ResponseString(json)
-                    </code></pre>
+                </code></pre>
             </section>
         </section>
         <section>
             <h1>Scalaz</h1>
             <ul>
-                <li class="fragment">Bruker det gi forstår</li>
+                <li class="fragment">Bruker det vi forstår</li>
                 <li class="fragment">Validation</li>
-                <li class="fragment">=== |+|</li>
+                <li class="fragment">===</li>
+                <li class="fragment">|+|</li>
                 <li class="fragment">Minus: import scalaz._; import Scalaz._</li>
             </ul>
         </section>
@@ -276,22 +351,24 @@ Ok ~> JsonContent ~> ResponseString(json)
 
         <section>
             <h1>Patterns</h1>
-            <section>
-                <h2>Cake</h2>
-            </section>
-            <section>
-                <h2>Typisk</h2>
-                <pre><code class="scala" contenteditable="true">
-val name = ""
-
-                </code></pre>
-            </section>
-            <section>
-                <h2>Transaction abstraction</h2>
-            </section>
         </section>
         <section>
-            <h1>Utvikling/Miljø</h1>
+            <h2>Cake</h2>
+            <img height="500px" src="http://4.bp.blogspot.com/-ubanPTSfw5I/TVi7VuhPJZI/AAAAAAAAF-M/HCK59Ue6mPU/s1600/Cake%2BCut%2BOpen%2B1.JPG"/>
+            <br/>
+            source: stepbystepgourmet.blogspot.com
+        </section>
+        <section>
+            <h2>Typisk</h2>
+            <pre><code class="scala" contenteditable="true">
+def lagPerson(navn: String, epost: String, telefon: String, vei: String, postkode: Int, komTilVerden: Int): Long = ???
+            </code></pre>
+        </section>
+        <section>
+            <h2>Transaction abstraction</h2>
+        </section>
+        <section>
+            <h1>Utviklingsmiljø</h1>
             <section>
                 <h2>SBT</h2>
                 <ul>
@@ -310,7 +387,7 @@ val name = ""
             </section>
             <section>
                 <h2>Docker</h2>
-                <ul>
+                <ul class="fragment">
                     <li>Fig.sh</li>
                 </ul>
             </section>
@@ -357,7 +434,12 @@ val name = ""
             { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
             { src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
-        ]
+        ],
+
+        margin: 0.1,
+
+        width: 1200,
+        height: 700
     });
 
 </script>
