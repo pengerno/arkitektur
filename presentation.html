@@ -19,6 +19,11 @@
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/idea.css">
+    <style>
+        .reveal .slides{
+            max-width: 1200px;
+        }
+    </style>
 
     <script>
         // If the query includes 'print-pdf' we'll use the PDF print sheet
@@ -52,7 +57,7 @@
         </section>
         <section>
             <h1>Historien</h1>
-            <p>2010 -> Jørgen forteller om den golden days - da man trodde alt var bra!</p>
+            <p>2010 -> Jørgen forteller om det golden days - da man trodde alt var bra!</p>
 
             <ul>
                 <li>Java</li>
@@ -68,56 +73,62 @@
             <section>
                 <h3>Produkter</h3>
                 <ul>
-                    <li>Boliglån</li>
-                    <li>Forsikring</li>
-                    <li>Billån</li>
-                    <li>Strøm</li>
-                    <li>...</li>
+                    <li class="fragment">Boliglån</li>
+                    <li class="fragment">Forsikring</li>
+                    <li class="fragment">Billån</li>
+                    <li class="fragment">Strøm</li>
+                    <li class="fragment">...</li>
                 </ul>
             </section>
             <section>
-                <h3>Sepearsjon mellom Front og Backend</h3>
-                <h4>Fordeler</h4>
-                <ul><li>Spesialisering</li></ul>
-
-                <h4>Ulemper</h4>
-                <ul><li>Flere involverte i en feature</li></ul>
+                <h3>Seperasjon mellom Front og Backend</h3>
+                <ul>
+                    <li class="fragment">+ Spesialisering</li>
+                    <li class="fragment">- Flere involverte i en feature</li>
+                </ul>
             </section>
         </section>
         <section>
-            <h1>Frontent for brukere/søkere</h1>
+            <h1>Frontend for brukere/søkere</h1>
             <ul>
-                <li>Node.js</li>
-                <li>Client.js</li>
+                <li class="fragment">Node.js</li>
+                <li class="fragment">Client.js</li>
             </ul>
 
         </section>
         <section>
             <h1>Frontent for admin</h1>
             <ul>
-                <li>HTML fram Scala</li>
+                <li>HTML fra Scala</li>
                 <li>Slick CRUD</li>
             </ul>
         </section>
 
         <section>
             <h1>Backend</h1>
-            <h2>HTTP</h2>
-            <ul>
-                <li>Unfiltered m/Directives</li>
-                <li>(Cyber)Suite</li>
-            </ul>
-            <h2>Middleware</h2>
-            <ul>
-                <li>Dispatch</li>
-                <li>Argonaut</li>
-                <li>Scalaz</li>
-            </ul>
-            <h2>Data</h2>
-            <ul>
-                <li>Slick</li>
-                <li>Elastic4s</li>
-            </ul>
+            <section></section>
+            <section>
+                <h2>HTTP</h2>
+                <ul>
+                    <li>Unfiltered m/Directives</li>
+                    <li>(Cyber)Suite</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Middleware</h2>
+                <ul>
+                    <li>Dispatch</li>
+                    <li>Argonaut</li>
+                    <li>Scalaz</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Data</h2>
+                <ul>
+                    <li>Slick</li>
+                    <li>Elastic4s</li>
+                </ul>
+            </section>
         </section>
         <section>
             <h1>Unfiltered</h1>
@@ -169,14 +180,16 @@ private object directive {
         <section>
             <h1>Slick CRUD</h1>
             <ul>
-                <li></li>
+                <li class="fragment">Slick 1.0 - Ru</li>
+                <li class="fragment">Slick 2.0 - Ru</li>
+                <li class="fragment">Slick 2.2 - CRU(D)</li>
             </ul>
         </section>
         <section>
             <h1>CyberSuite</h1>
             <ul>
-                <li>Skjema design/DSL</li>
-                <li>Valideringsmismatch</li>
+                <li class="fragment">Skjema design/DSL</li>
+                <li class="fragment">Valideringsmismatch</li>
             </ul>
         </section>
         <section>
